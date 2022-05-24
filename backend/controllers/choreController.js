@@ -6,14 +6,18 @@ const Chore = require('../models/choreModel');
 // @desc Get chores
 // @route GET /api/v1/chores
 // @access Private
-const getChores = asyncHandler(async (req, res) => {});
+const getChores = asyncHandler(async (req, res) => {
+  console.log(req.body.user);
+  const chores = await Chore.find({ user: req.body.user });
+
+  res.status(200).json(chores);
+});
 
 // @desc Create chore
 // @route POST /api/v1/chores
 // @access Private
 const createChore = asyncHandler(async (req, res) => {
   if (!req.body.task || !req.body.day) {
-    console.log(req.body);
     res.status(400);
     throw new Error('Please fill out all information');
   }
