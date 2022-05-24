@@ -31,4 +31,39 @@ const createChore = asyncHandler(async (req, res) => {
   res.status(200).json(chore);
 });
 
-module.exports = { getChores, createChore };
+// @desc Update chores
+// @route PUT /api/v1/chores/id
+// @access Private
+const updateChore = asyncHandler(async (req, res) => {
+  const chore = await Chore.findById(req.params.id);
+
+  if (!chore) {
+    res.status(400);
+    throw new Error('Chore does not exist');
+  }
+
+  // Check for user
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found');
+  }
+
+  // Confrim user is attached to chore
+  if (goal.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized');
+  }
+
+  const updatedGoal = await Chore.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json(updatedGoal);
+});
+
+// @desc Delete goals
+// @route DELETE /api/v1/chores/id
+// @access Private
+const deleteChore = asyncHandler(async (req, res) => {});
+
+module.exports = { getChores, createChore, updateChore, deleteChore };
