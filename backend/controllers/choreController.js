@@ -64,6 +64,29 @@ const updateChore = asyncHandler(async (req, res) => {
 // @desc Delete goals
 // @route DELETE /api/v1/chores/id
 // @access Private
-const deleteChore = asyncHandler(async (req, res) => {});
+const deleteChore = asyncHandler(async (req, res) => {
+  const chore = await Chore.findById(req.params.id);
+
+  if (!chore) {
+    res.status(400);
+    throw new Error('Chore does not exist');
+  }
+
+  // Check for user
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found');
+  }
+
+  // Confrim user is attached to chore
+  if (chore.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized');
+  }
+
+  await chore.remove();
+
+  res.status(200).json('Goal deleted');
+});
 
 module.exports = { getChores, createChore, updateChore, deleteChore };
