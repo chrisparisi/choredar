@@ -49,19 +49,19 @@ const updateChore = asyncHandler(async (req, res) => {
   }
 
   // Confrim user is attached to chore
-  if (goal.user.toString() !== req.user.id) {
+  if (!chore.user.includes(req.user.id)) {
     res.status(401);
     throw new Error('User not authorized');
   }
 
-  const updatedGoal = await Chore.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedChore = await Chore.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
 
-  res.status(200).json(updatedGoal);
+  res.status(200).json(updatedChore);
 });
 
-// @desc Delete goals
+// @desc Delete chore
 // @route DELETE /api/v1/chores/id
 // @access Private
 const deleteChore = asyncHandler(async (req, res) => {
@@ -79,14 +79,14 @@ const deleteChore = asyncHandler(async (req, res) => {
   }
 
   // Confrim user is attached to chore
-  if (chore.user.toString() !== req.user.id) {
+  if (!chore.user.includes(req.user.id)) {
     res.status(401);
     throw new Error('User not authorized');
   }
 
   await chore.remove();
 
-  res.status(200).json('Goal deleted');
+  res.status(200).json('Chore deleted');
 });
 
 module.exports = { getChores, createChore, updateChore, deleteChore };
