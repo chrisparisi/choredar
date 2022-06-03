@@ -18,11 +18,36 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
-      <div className="header__logo">
-        <Link to="/">Choredar</Link>
-      </div>
-    </header>
+    <>
+      <div className="grad-bar"></div>
+      <header className="header">
+        <div className="header__logo">
+          <Link to="/">Choredar</Link>
+        </div>
+        <ul>
+          {user ? (
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">
+                  <FaSignInAlt /> Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/register">
+                  <FaUser /> Register
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </header>
+    </>
   );
 };
 
