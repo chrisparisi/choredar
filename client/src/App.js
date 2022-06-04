@@ -5,6 +5,7 @@ import './App.scss';
 import Header from './components/header/Header';
 import Welcome from './pages/welcome/Welcome';
 import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Register />} /> */}
+            <Route path="/register" element={<Register />} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           </Routes>
         </div>
       </Router>
