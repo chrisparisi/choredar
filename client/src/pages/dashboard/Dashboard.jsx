@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import './Dashboard.scss';
 import Spinner from '../../components/spinner/Spinner';
 import ChoreForm from '../../components/choreForm/ChoreForm';
 import ChoreItem from '../../components/choreItem/ChoreItem';
@@ -42,7 +43,7 @@ const Dashboard = () => {
     <div className="container">
       <section className="heading">
         <h1>Welcome {user && user.name}</h1>
-        <p>Choress Dashboard</p>
+        <p>Chores Dashboard</p>
       </section>
 
       <ChoreForm />

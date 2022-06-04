@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'api/v1/chores';
+const API_URL = 'api/v1/chores/';
 
 // Create new chore
 const createChore = async (choreData, token) => {
@@ -15,7 +15,7 @@ const createChore = async (choreData, token) => {
   return response.data;
 };
 
-// Create new chore
+// Get chores
 const getChores = async (token) => {
   const config = {
     headers: {
@@ -24,6 +24,8 @@ const getChores = async (token) => {
   };
 
   const response = await axios.get(API_URL, config);
+
+  console.log(response.data);
 
   return response.data;
 };

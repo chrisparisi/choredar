@@ -7,8 +7,7 @@ const Chore = require('../models/choreModel');
 // @route GET /api/v1/chores
 // @access Private
 const getChores = asyncHandler(async (req, res) => {
-  console.log(req.body.user);
-  const chores = await Chore.find({ user: req.body.user });
+  const chores = await Chore.find({ user: req.user });
 
   res.status(200).json(chores);
 });
