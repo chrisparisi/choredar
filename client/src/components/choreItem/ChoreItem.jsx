@@ -12,7 +12,7 @@ const ChoreItem = ({ chore }) => {
       <div>{new Date(chore.createdAt).toLocaleString('en-US')}</div>
       <h2>{chore.task}</h2>
       {chore.user.map((user, i) => {
-        return <p key={i}>{user}</p>;
+        return <p key={i}>{user.name}</p>;
       })}
       <button
         onClick={() => dispatch(deleteChore(chore._id))}

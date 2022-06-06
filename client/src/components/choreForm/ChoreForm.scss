@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    width: 80%;
+  }
+}

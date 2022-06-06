@@ -44,19 +44,19 @@ const Dashboard = () => {
   let sunday = [];
 
   for (let i = 0; i < chores.length; i++) {
-    if (chores[i].day === 'monday') {
+    if (chores[i].day === 'Monday') {
       monday.push(chores[i]);
-    } else if (chores[i].day === 'tuesday') {
+    } else if (chores[i].day === 'Tuesday') {
       tuesday.push(chores[i]);
-    } else if (chores[i].day === 'wednesday') {
+    } else if (chores[i].day === 'Wednesday') {
       wednesday.push(chores[i]);
-    } else if (chores[i].day === 'thursday') {
+    } else if (chores[i].day === 'Thursday') {
       thursday.push(chores[i]);
-    } else if (chores[i].day === 'friday') {
+    } else if (chores[i].day === 'Friday') {
       friday.push(chores[i]);
-    } else if (chores[i].day === 'saturday') {
+    } else if (chores[i].day === 'Saturday') {
       saturday.push(chores[i]);
-    } else if (chores[i].day === 'sunday') {
+    } else if (chores[i].day === 'Sunday') {
       sunday.push(chores[i]);
     }
   }

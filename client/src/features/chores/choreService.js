@@ -4,6 +4,7 @@ const API_URL = 'api/v1/chores/';
 
 // Create new chore
 const createChore = async (choreData, token) => {
+  console.log(choreData);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -12,6 +13,7 @@ const createChore = async (choreData, token) => {
 
   const response = await axios.post(API_URL, choreData, config);
 
+  console.log(response.data);
   return response.data;
 };
 
@@ -24,8 +26,6 @@ const getChores = async (token) => {
   };
 
   const response = await axios.get(API_URL, config);
-
-  console.log(response.data);
 
   return response.data;
 };

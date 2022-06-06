@@ -7,7 +7,7 @@ const Chore = require('../models/choreModel');
 // @route GET /api/v1/chores
 // @access Private
 const getChores = asyncHandler(async (req, res) => {
-  const chores = await Chore.find({ user: req.user });
+  const chores = await Chore.find({ user: req.user }).populate('user', 'name');
 
   res.status(200).json(chores);
 });
@@ -22,7 +22,7 @@ const createChore = asyncHandler(async (req, res) => {
   }
 
   const chore = await Chore.create({
-    user: req.body.user,
+    user: req.user.id,
     task: req.body.task,
     day: req.body.day,
   });
