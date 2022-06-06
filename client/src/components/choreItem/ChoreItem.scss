@@ -1,11 +1,19 @@
 .chore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #f4f4f4;
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
+
+  h2 {
+    color: #000;
+  }
 }
 
-.goal .close {
+.chore .close {
   position: absolute;
   top: 10px;
   right: 15px;
