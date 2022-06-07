@@ -21,11 +21,25 @@ const createChore = asyncHandler(async (req, res) => {
     throw new Error('Please fill out all information');
   }
 
-  const chore = await Chore.create({
-    user: req.user.id,
-    task: req.body.task,
-    day: req.body.day,
-  });
+  console.log(req.body.users);
+
+  if (req.body.users) {
+    const extraUsers = await User.find({ email: req.body.users });
+
+    let chore;
+
+    chore = await Chore.create({
+      user: [req.user.id, extraUsers[0]._id],
+      task: req.body.task,
+      day: req.body.day,
+    });
+  } else {
+    chore = await Chore.create({
+      user: req.user.id,
+      task: req.body.task,
+      day: req.body.day,
+    });
+  }
 
   res.status(200).json(chore);
 });
