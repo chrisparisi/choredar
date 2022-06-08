@@ -1,9 +1,11 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv').config();
 
 const { errorHandler } = require('./middleware/errorMiddlerware');
 const port = process.env.PORT || 5000;
 const connectDB = require('./config/db');
+const { sendFile } = require('express/lib/response');
 
 connectDB();
 
@@ -14,6 +16,19 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/users', require('./routes/userRoutes'));
 app.use('/api/v1/chores', require('./routes/choreRoutes'));
+
+//Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
 
 app.use(errorHandler);
 
