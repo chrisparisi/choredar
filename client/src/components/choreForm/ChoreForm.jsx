@@ -12,10 +12,6 @@ const ChoreForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
-    console.log(e.target[2].value);
-
     e.preventDefault();
     dispatch(createChore({ task, day, users }));
     setTask('');

@@ -16,7 +16,8 @@ export const createChore = createAsyncThunk(
   async (choreData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await choreService.createChore(choreData, token);
+      await choreService.createChore(choreData, token);
+      return await choreService.getChores(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -56,7 +57,8 @@ export const deleteChore = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await choreService.deleteChore(id, token);
+      await choreService.deleteChore(id, token);
+      return await choreService.getChores(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -84,7 +86,7 @@ export const choreSlice = createSlice({
       .addCase(createChore.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.chores.push(action.payload);
+        state.chores = action.payload;
       })
       .addCase(createChore.rejected, (state, action) => {
         state.isLoading = false;
@@ -110,9 +112,7 @@ export const choreSlice = createSlice({
       .addCase(deleteChore.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.chores = state.chores.filter(
-          (chore) => chore._id !== action.payload.id
-        );
+        state.chores = action.payload;
       })
       .addCase(deleteChore.rejected, (state, action) => {
         state.isLoading = false;

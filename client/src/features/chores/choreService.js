@@ -4,7 +4,6 @@ const API_URL = 'api/v1/chores/';
 
 // Create new chore
 const createChore = async (choreData, token) => {
-  console.log(choreData);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

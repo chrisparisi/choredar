@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -35,31 +35,31 @@ const Dashboard = () => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
-  let monday = [];
-  let tuesday = [];
-  let wednesday = [];
-  let thursday = [];
-  let friday = [];
-  let saturday = [];
-  let sunday = [];
+  const [monday, setMonday] = useState([]);
+  const [tuesday, setTuesday] = useState([]);
+  const [wednesday, setWednesday] = useState([]);
+  const [thursday, setThursday] = useState([]);
+  const [friday, setFriday] = useState([]);
+  const [saturday, setSaturday] = useState([]);
+  const [sunday, setSunday] = useState([]);
 
-  for (let i = 0; i < chores.length; i++) {
-    if (chores[i].day === 'Monday') {
-      monday.push(chores[i]);
-    } else if (chores[i].day === 'Tuesday') {
-      tuesday.push(chores[i]);
-    } else if (chores[i].day === 'Wednesday') {
-      wednesday.push(chores[i]);
-    } else if (chores[i].day === 'Thursday') {
-      thursday.push(chores[i]);
-    } else if (chores[i].day === 'Friday') {
-      friday.push(chores[i]);
-    } else if (chores[i].day === 'Saturday') {
-      saturday.push(chores[i]);
-    } else if (chores[i].day === 'Sunday') {
-      sunday.push(chores[i]);
-    }
-  }
+  useEffect(() => {
+    const mondayFilter = chores.filter((chore) => chore.day === 'Monday');
+    const tuesdayFilter = chores.filter((chore) => chore.day === 'Tuesday');
+    const wednesdayFilter = chores.filter((chore) => chore.day === 'Wednesday');
+    const thursdayFilter = chores.filter((chore) => chore.day === 'Thursday');
+    const fridayFilter = chores.filter((chore) => chore.day === 'Friday');
+    const saturdayFilter = chores.filter((chore) => chore.day === 'Saturday');
+    const sundayFilter = chores.filter((chore) => chore.day === 'Sunday');
+
+    setMonday(mondayFilter);
+    setTuesday(tuesdayFilter);
+    setWednesday(wednesdayFilter);
+    setThursday(thursdayFilter);
+    setFriday(fridayFilter);
+    setSaturday(saturdayFilter);
+    setSunday(sundayFilter);
+  }, [chores]);
 
   if (isLoading) {
     return <Spinner />;
