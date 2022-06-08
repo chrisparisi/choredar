@@ -21,8 +21,6 @@ const createChore = asyncHandler(async (req, res) => {
     throw new Error('Please fill out all information');
   }
 
-  console.log(req.body.users);
-
   if (req.body.users) {
     const extraUsers = await User.find({ email: req.body.users });
 

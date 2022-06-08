@@ -13,7 +13,6 @@ const createChore = async (choreData, token) => {
 
   const response = await axios.post(API_URL, choreData, config);
 
-  console.log(response.data);
   return response.data;
 };
 
