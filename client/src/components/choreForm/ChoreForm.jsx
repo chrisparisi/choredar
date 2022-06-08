@@ -27,6 +27,7 @@ const ChoreForm = () => {
         <div className="form-group">
           <label htmlFor="task">Chore</label>
           <textarea
+            placeholder="Enter chore here"
             rows="4"
             type="text"
             name="task"
@@ -36,8 +37,9 @@ const ChoreForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="users">Extra Person</label>
+          <label htmlFor="users">Extra Help (optional)</label>
           <input
+            placeholder="Tag another person with their email"
             type="text"
             name="users"
             id="users"
@@ -48,7 +50,6 @@ const ChoreForm = () => {
         <div className="form-group">
           <label htmlFor="day">Day</label>
           <select
-            type="text"
             name="day"
             id="day"
             value={day}
@@ -65,7 +66,7 @@ const ChoreForm = () => {
           </select>
         </div>
         <div className="form-group">
-          <button className="btn btn-block">Add Chore</button>
+          <button className="btn form-btn">Add Chore</button>
         </div>
       </form>
     </section>
