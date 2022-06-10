@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { deleteChore } from '../../features/chores/choreSlice';
 import './ChoreItem.scss';
 
+import UpdateModal from '../updateModal/UpdateModal';
+
 const ChoreItem = ({ chore }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const dispatch = useDispatch();
 
   return (
@@ -20,6 +24,14 @@ const ChoreItem = ({ chore }) => {
       >
         x
       </button>
+      <button onClick={() => setIsOpen(!isOpen)} className="update">
+        Update
+      </button>
+      <UpdateModal
+        open={isOpen}
+        chore={chore}
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   );
 };

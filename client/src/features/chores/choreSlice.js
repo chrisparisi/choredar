@@ -51,6 +51,28 @@ export const getChores = createAsyncThunk(
   }
 );
 
+// Update user chore
+export const updateChore = createAsyncThunk(
+  'chores/update',
+  async (choreData, thunkAPI) => {
+    const id = choreData.id;
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      await choreService.updateChore(id, choreData, token);
+      return await choreService.getChores(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete user chore
 export const deleteChore = createAsyncThunk(
   'chores/delete',
@@ -102,6 +124,19 @@ export const choreSlice = createSlice({
         state.chores = action.payload;
       })
       .addCase(getChores.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateChore.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateChore.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.chores = action.payload;
+      })
+      .addCase(updateChore.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

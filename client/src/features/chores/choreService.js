@@ -28,7 +28,20 @@ const getChores = async (token) => {
   return response.data;
 };
 
-// Create new chore
+// Update chore
+const updateChore = async (choreId, choreData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(API_URL + choreId, choreData, config);
+
+  return response.data;
+};
+
+// Delete chore
 const deleteChore = async (choreId, token) => {
   const config = {
     headers: {
@@ -44,6 +57,7 @@ const deleteChore = async (choreId, token) => {
 const choreService = {
   createChore,
   getChores,
+  updateChore,
   deleteChore,
 };
 

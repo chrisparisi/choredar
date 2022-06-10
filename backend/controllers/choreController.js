@@ -50,6 +50,13 @@ const createChore = asyncHandler(async (req, res) => {
 const updateChore = asyncHandler(async (req, res) => {
   const chore = await Chore.findById(req.params.id);
 
+  if (req.body.user == '') {
+    req.body.user = req.user.id;
+  } else if (req.body.user) {
+    const extraUsers = await User.find({ email: req.body.user });
+    req.body.user = [req.user.id, extraUsers[0]._id];
+  }
+
   if (!chore) {
     res.status(400);
     throw new Error('Chore does not exist');
