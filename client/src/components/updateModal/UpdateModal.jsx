@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { updateChore } from '../../features/chores/choreSlice';
 import './UpdateModal.scss';
 
 const UpdateModal = ({ open, chore, onClose }) => {
-  const [task, setTask] = useState('');
-  const [day, setDay] = useState('');
+  const [task, setTask] = useState(chore.task);
+  const [day, setDay] = useState(chore.day);
   const [user, setUser] = useState('');
+
+  useEffect(() => {
+    if (typeof chore.user[1] !== typeof undefined) {
+      setUser(chore.user[1].email);
+    }
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -30,7 +36,6 @@ const UpdateModal = ({ open, chore, onClose }) => {
             <div className="form-group">
               <label htmlFor="task">Chore</label>
               <textarea
-                placeholder={chore.task}
                 rows="4"
                 type="text"
                 name="task"

@@ -8,7 +8,7 @@ const Chore = require('../models/choreModel');
 // @access Private
 const getChores = asyncHandler(async (req, res) => {
   const chores = await Chore.find({ user: req.user })
-    .populate('user', 'name')
+    .populate('user', 'name email')
     .exec();
 
   res.status(200).json(chores);

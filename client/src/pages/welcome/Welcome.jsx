@@ -25,7 +25,7 @@ const Welcome = () => {
             Join the half dozen of people who are using Choredar to keep track
             of their chores
           </p>
-          <button className="btn">Get started</button>
+          <button className="btn welcome-btn">Get started</button>
         </div>
         <div className="welcome__right">
           <img src={images.header} alt="header" />
