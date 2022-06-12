@@ -1,0 +1,35 @@
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .welcome__left {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+
+    h1 {
+      font-size: 3.1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .welcome__right {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 75%;
+      height: auto;
+    }
+  }
+}
