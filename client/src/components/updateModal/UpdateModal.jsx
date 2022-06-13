@@ -13,7 +13,7 @@ const UpdateModal = ({ open, chore, onClose }) => {
     if (typeof chore.user[1] !== typeof undefined) {
       setUser(chore.user[1].email);
     }
-  }, []);
+  }, [chore.user]);
 
   const dispatch = useDispatch();
 
@@ -45,17 +45,6 @@ const UpdateModal = ({ open, chore, onClose }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="user">Extra Help (optional)</label>
-              <input
-                placeholder="Tag another person with their email"
-                type="text"
-                name="user"
-                id="user"
-                value={user}
-                onChange={(e) => setUser(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
               <label htmlFor="day">Day</label>
               <select
                 name="day"
@@ -72,6 +61,17 @@ const UpdateModal = ({ open, chore, onClose }) => {
                 <option value="Saturday">Monday</option>
                 <option value="Sunday">Sunday</option>
               </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="user">Extra Help (optional)</label>
+              <input
+                placeholder="Tag another person with their email"
+                type="text"
+                name="user"
+                id="user"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+              />
             </div>
             <button onClick={onClose} className="close">
               x

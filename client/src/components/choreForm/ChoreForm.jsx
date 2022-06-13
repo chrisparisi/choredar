@@ -33,17 +33,6 @@ const ChoreForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="users">Extra Help (optional)</label>
-          <input
-            placeholder="Tag another person with their email"
-            type="text"
-            name="users"
-            id="users"
-            value={users}
-            onChange={(e) => setUsers(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="day">Day</label>
           <select
             name="day"
@@ -60,6 +49,17 @@ const ChoreForm = () => {
             <option value="Saturday">Monday</option>
             <option value="Sunday">Sunday</option>
           </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="users">Extra Help (optional)</label>
+          <input
+            placeholder="Tag another person with their email"
+            type="text"
+            name="users"
+            id="users"
+            value={users}
+            onChange={(e) => setUsers(e.target.value)}
+          />
         </div>
         <div className="form-group">
           <button className="btn form-btn">Add Chore</button>

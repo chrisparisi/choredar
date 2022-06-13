@@ -17,8 +17,11 @@ const Dashboard = () => {
     (state) => state.chores
   );
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   useEffect(() => {
     if (isError) {
+      setErrorMessage(message);
       console.log(message);
     }
 
@@ -71,6 +74,10 @@ const Dashboard = () => {
         <h1>Welcome {user && user.name}</h1>
         <p>Chores Dashboard</p>
       </section>
+
+      {errorMessage && (
+        <p className="error">*{errorMessage}. Extra Help can be blank*</p>
+      )}
 
       <ChoreForm />
 
