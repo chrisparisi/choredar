@@ -1,11 +1,11 @@
 const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv').config();
+const { sendFile } = require('express/lib/response');
 
 const { errorHandler } = require('./middleware/errorMiddlerware');
 const port = process.env.PORT || 5000;
 const connectDB = require('./config/db');
-const { sendFile } = require('express/lib/response');
 
 connectDB();
 
