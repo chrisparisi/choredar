@@ -12,7 +12,7 @@ const initialState = {
 
 // Create new chore
 export const createChore = createAsyncThunk(
-  'choress/create',
+  'chores/create',
   async (choreData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
