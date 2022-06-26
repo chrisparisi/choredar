@@ -1,7 +1,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  margin-bottom: 3rem;
 }
 
 .form-group {
@@ -30,9 +34,5 @@
     line-height: 1.1;
     background-color: #fff;
     background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-  }
-
-  .form-btn {
-    margin-bottom: 3rem;
   }
 }
