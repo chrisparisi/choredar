@@ -31,7 +31,7 @@ const UpdateModal = ({ open, chore, onClose }) => {
     <>
       <div className="overlay" />
       <div className="updateModal">
-        <section className="form">
+        <section className="form-modal">
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <label htmlFor="task">Chore</label>
