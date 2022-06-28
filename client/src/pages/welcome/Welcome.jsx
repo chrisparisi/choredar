@@ -21,6 +21,9 @@ const Welcome = () => {
         <div className="welcome__left">
           <h1>PUT IT ON YOUR RADAR</h1>
           <h2>AND GET IT DONE</h2>
+          <div className="welcome__mobile-pic">
+            <img src={images.header} alt="header" />
+          </div>
           <p>
             Join the half dozen of people who are using Choredar to keep track
             of their chores
