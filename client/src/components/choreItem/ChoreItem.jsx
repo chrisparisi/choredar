@@ -13,7 +13,7 @@ const ChoreItem = ({ chore }) => {
 
   return (
     <div className="chore">
-      <div>{new Date(chore.createdAt).toLocaleString('en-US')}</div>
+      {/* <div>{new Date(chore.createdAt).toLocaleString('en-US')}</div> */}
       <h2>{chore.task}</h2>
       {chore.user.map((user, i) => {
         return <p key={i}>{user.name}</p>;
