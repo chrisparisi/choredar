@@ -7,6 +7,12 @@
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+
+  @media screen and (max-width: 410px) {
+    p {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .register__form {
@@ -16,6 +22,9 @@
 
 .register__form-group {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   input,
   textarea,
@@ -26,5 +35,15 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-family: inherit;
+
+    @media screen and (min-width: 750px) {
+      width: 40%;
+    }
+  }
+}
+
+.btn-block {
+  @media screen and (min-width: 750px) {
+    width: 40%;
   }
 }
