@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { images } from '../../constants';
@@ -28,7 +28,9 @@ const Welcome = () => {
             Join the half dozen of people who are using Choredar to keep track
             of their chores
           </p>
-          <button className="btn welcome-btn">Get started</button>
+          <Link to="/register">
+            <button className="btn welcome-btn">Get started</button>
+          </Link>
         </div>
         <div className="welcome__right">
           <img src={images.header} alt="header" />
